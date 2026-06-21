@@ -38,7 +38,8 @@ _REQUIREMENT_INDEX = _build_indexes(JSON_FILE_PATH)
 
 # ── OpenAI client ─────────────────────────────────────────────────────────────
 
-_client = openai.OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+_api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
+_client = openai.OpenAI(api_key=_api_key)
 
 # ── LLM scoring ───────────────────────────────────────────────────────────────
 
