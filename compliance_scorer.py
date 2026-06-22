@@ -94,7 +94,61 @@ def _score_against_requirement(
         raise ValueError(f"LLM returned invalid JSON: {raw!r}") from exc
 
 
-# ── Entry point ───────────────────────────────────────────────────────────────
+def _score_multiple_against_requirement(
+    req: dict,
+    documents: list[dict],
+) -> dict:
+    """Score a collection of documents collectively against one requirement."""
+    system = (
+        "You are a compliance analyst assessing whether a set of documents, taken together, "
+        "satisfies a specific SAMA Cyber Security Framework evidence requirement. "
+        "Consider the documents as a combined evidence package — they may complement each other. "
+        "Return ONLY a JSON object with exactly three keys: "
+        '"present" (boolean — true if the documents collectively satisfy the requirement), '
+        '"score" (integer 0-100 reflecting how well the combined evidence covers the requirement — '
+        "100 = fully covered, 0 = not covered at all), "
+        '"reasoning" (one sentence explaining your assessment of the combined evidence). '
+        "No preamble, no markdown fences."
+    )
+
+    docs_section = ""
+    for i, doc in enumerate(documents, 1):
+        extra_section = ""
+        if doc.get("doc_extra"):
+            extra_section = (
+                f"\n  Additional extracted elements: {json.dumps(doc['doc_extra'])}"
+            )
+        docs_section += (
+            f"\n--- Document {i}: {doc['doc_name']} ---\n"
+            f"{doc['doc_text']}"
+            f"{extra_section}\n"
+        )
+
+    user = (
+        f"Control: {req['title']} ({req['control_code']})\n"
+        f"Domain: {req['domain']} > {req['subdomain']}\n"
+        f"Control description: {req['description']}\n\n"
+        f"Evidence requirement ({req['evidence_code']}):\n{req['evidence_description']}\n\n"
+        f"Evidence package ({len(documents)} document(s)):{docs_section}\n"
+        "Do these documents collectively satisfy the evidence requirement above? Return JSON only."
+    )
+
+    response = _client.chat.completions.create(
+        model=MODEL,
+        max_tokens=512,
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+    )
+    raw = response.choices[0].message.content.strip()
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"LLM returned invalid JSON: {raw!r}") from exc
+
+
+# ── Entry points ──────────────────────────────────────────────────────────────
 
 def score_document(
     evidence_code: str,
@@ -102,7 +156,7 @@ def score_document(
     doc_text: str,
     doc_extra: list[str] | None = None,
 ) -> dict:
-    """Score a document against a single SAMA CSF evidence requirement.
+    """Score a single document against a SAMA CSF evidence requirement.
 
     Args:
         evidence_code: the requirement code, e.g. "SAMA-3.1.1-1-L3-1"
@@ -134,35 +188,82 @@ def score_document(
     }
 
 
+def score_documents(
+    evidence_code: str,
+    documents: list[dict],
+) -> dict:
+    """Score multiple documents collectively against one SAMA CSF evidence requirement.
+
+    All documents are evaluated as a combined evidence package, producing a single
+    compliance score that reflects their collective coverage of the requirement.
+
+    Args:
+        evidence_code: the requirement code, e.g. "SAMA-3.1.1-1-L3-1"
+        documents:     list of dicts, each with keys:
+                         "doc_name"  (str)            — filename or display name
+                         "doc_text"  (str)            — raw extracted text
+                         "doc_extra" (list[str]|None) — optional non-text elements
+
+    Returns:
+        Result dict with score_percentage, present flag, reasoning, and document_names list.
+    """
+    if not documents:
+        raise ValueError("At least one document must be provided.")
+
+    if evidence_code not in _REQUIREMENT_INDEX:
+        raise KeyError(f"Evidence code '{evidence_code}' not found in the SAMA CSF hierarchy.")
+
+    req = _REQUIREMENT_INDEX[evidence_code]
+
+    llm_result = _score_multiple_against_requirement(req, documents)
+
+    return {
+        "control_id": req["control_code"],
+        "control_title": req["title"],
+        "domain": req["domain"],
+        "subdomain": req["subdomain"],
+        "evidence_code": evidence_code,
+        "evidence_description": req["evidence_description"],
+        "document_names": [d["doc_name"] for d in documents],
+        "present": llm_result.get("present", False),
+        "score_percentage": float(llm_result.get("score", 0)),
+        "reasoning": llm_result.get("reasoning", ""),
+    }
+
+
 # ── CLI ───────────────────────────────────────────────────────────────────────
-# Usage: python compliance_scorer.py <document_path> <evidence_code>
-# Example: python compliance_scorer.py "my_doc.md" "SAMA-3.1.1-1-L3-1"
+# Single doc:   python compliance_scorer.py <evidence_code> <doc1>
+# Multi-doc:    python compliance_scorer.py <evidence_code> <doc1> <doc2> ...
 
 if __name__ == "__main__":
     import sys
     import re
 
-    if len(sys.argv) != 3:
-        print("Usage: python compliance_scorer.py <document_path> <evidence_code>")
+    if len(sys.argv) < 3:
+        print("Usage: python compliance_scorer.py <evidence_code> <document_path> [<document_path> ...]")
         sys.exit(1)
 
-    doc_path = sys.argv[1]
-    evidence_code = sys.argv[2]
+    evidence_code = sys.argv[1]
+    doc_paths = sys.argv[2:]
 
-    with open(doc_path, encoding="utf-8") as f:
-        raw = f.read()
+    def _parse_doc(path: str) -> dict:
+        with open(path, encoding="utf-8") as f:
+            raw = f.read()
+        image_tags = re.findall(r"<!--\s*image\s*-->", raw, flags=re.IGNORECASE)
+        doc_extra = [f"{len(image_tags)} image placeholder(s) detected in document"] if image_tags else None
+        doc_text = re.sub(r"<!--.*?-->", "", raw, flags=re.DOTALL).strip()
+        return {"doc_name": os.path.basename(path), "doc_text": doc_text, "doc_extra": doc_extra}
 
-    # Pull out image/stamp markers so they go into doc_extra
-    image_tags = re.findall(r"<!--\s*image\s*-->", raw, flags=re.IGNORECASE)
-    doc_extra = [f"{len(image_tags)} image placeholder(s) detected in document"] if image_tags else None
+    if len(doc_paths) == 1:
+        doc = _parse_doc(doc_paths[0])
+        result = score_document(
+            evidence_code=evidence_code,
+            doc_name=doc["doc_name"],
+            doc_text=doc["doc_text"],
+            doc_extra=doc["doc_extra"],
+        )
+    else:
+        documents = [_parse_doc(p) for p in doc_paths]
+        result = score_documents(evidence_code=evidence_code, documents=documents)
 
-    # Strip markup noise for the text blob
-    doc_text = re.sub(r"<!--.*?-->", "", raw, flags=re.DOTALL).strip()
-
-    result = score_document(
-        evidence_code=evidence_code,
-        doc_name=os.path.basename(doc_path),
-        doc_text=doc_text,
-        doc_extra=doc_extra,
-    )
     print(json.dumps(result, indent=2, ensure_ascii=False))
