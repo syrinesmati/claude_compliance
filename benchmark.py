@@ -12,6 +12,7 @@ Usage:
 import os
 import re
 import json
+import time
 from pathlib import Path
 from compliance_scorer import score_documents
 
@@ -50,6 +51,7 @@ TEST_CASES = [
     "SAMA-3.1.3-2-L3-1",
     "SAMA-3.2.1.3-3-L3-1",
     "SAMA-3.2.4-2-L3-2",
+    "SAMA-3.3.2-2-L3-1",
 ]
 
 
@@ -89,8 +91,10 @@ def main():
         print(f"\n{'='*60}")
         print(f"Test case: {tc}")
 
+        t0 = time.time()
         success_result = score_set(tc, tc_dir / "Success", "Success")
         failure_result = score_set(tc, tc_dir / "Failure", "Failure")
+        elapsed = time.time() - t0
 
         def _mr_summary(result: dict) -> str:
             mrs = result.get("micro_requirements", [])
@@ -114,6 +118,7 @@ def main():
             "failure_reliability": failure_result.get("reliability", ""),
             "failure_micro_summary": _mr_summary(failure_result),
             "failure_actions": failure_result.get("actions_needed_en", []),
+            "elapsed_seconds": round(elapsed, 1),
             # full LLM outputs for the JSON dump
             "success_full": success_result,
             "failure_full": failure_result,
@@ -128,6 +133,7 @@ def main():
     col_sc  = 16
     col_fl  = 16
     col_ok  = 8
+    col_t   = 10
 
     header = (
         f"{'Test Case':<{col_tc}}"
@@ -135,9 +141,10 @@ def main():
         f"{'  Present':<{col_ok}}"
         f"{'Failure Score':>{col_fl}}"
         f"{'  Present':<{col_ok}}"
+        f"{'Time':>{col_t}}"
     )
     print(header)
-    print("-" * (col_tc + col_sc + col_ok + col_fl + col_ok))
+    print("-" * (col_tc + col_sc + col_ok + col_fl + col_ok + col_t))
 
     for r in results:
         line = (
@@ -146,6 +153,7 @@ def main():
             f"  {'YES' if r['success_present'] else 'NO':<{col_ok - 2}}"
             f"{r['failure_score']:>{col_fl}.1f}%"
             f"  {'YES' if r['failure_present'] else 'NO':<{col_ok - 2}}"
+            f"{r['elapsed_seconds']:>{col_t}.1f}s"
         )
         print(line)
 

@@ -2,6 +2,7 @@ import json
 import os
 import re
 import openai
+from json_repair import repair_json
 
 JSON_FILE_PATH = os.path.join(os.path.dirname(__file__), "sama-csf-hierarchy-level3.json")
 
@@ -175,6 +176,7 @@ def _extract_json(raw: str) -> dict:
     depth = 0
     in_str = False
     esc = False
+    candidate = None
     for i, ch in enumerate(raw[start:], start):
         if esc:
             esc = False
@@ -190,10 +192,21 @@ def _extract_json(raw: str) -> dict:
             elif ch == "}":
                 depth -= 1
                 if depth == 0:
-                    try:
-                        return json.loads(raw[start : i + 1])
-                    except json.JSONDecodeError:
-                        break
+                    candidate = raw[start : i + 1]
+                    break
+    if candidate:
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError:
+            pass
+        # LLM produced malformed JSON (e.g. unescaped quotes in Arabic text) — repair it
+        repaired = repair_json(candidate, return_objects=True)
+        if isinstance(repaired, dict):
+            return repaired
+    # Last resort: repair the full cleaned string
+    repaired = repair_json(raw, return_objects=True)
+    if isinstance(repaired, dict):
+        return repaired
     raise ValueError(f"No valid JSON object found in LLM output: {raw!r}")
 
 
