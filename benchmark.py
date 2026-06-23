@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""
+Benchmark compliance scorer across all test cases.
+
+For each test case directory, scores Success and Failure document sets
+separately (each set as a combined evidence package) and prints a summary table.
+
+Usage:
+    VLLM_BASE_URL=http://localhost:8000/v1 python3 benchmark.py
+"""
+
+import os
+import re
+import json
+from pathlib import Path
+from compliance_scorer import score_documents
+
+import pypdfium2
+
+BASE_DIR = Path(__file__).parent
+
+SUPPORTED_EXTENSIONS = {".pdf", ".md", ".txt"}
+
+
+def _read_pdf(path: Path) -> tuple[str, list[str] | None]:
+    """Extract text from a text-native PDF using pypdfium2.
+    For Arabic/scanned PDFs run through the doc-engine first."""
+    pdf = pypdfium2.PdfDocument(str(path))
+    pages = []
+    for page in pdf:
+        textpage = page.get_textpage()
+        pages.append(textpage.get_text_range())
+        textpage.close()
+        page.close()
+    pdf.close()
+    text = "\n\n".join(pages).strip()
+    return text, None
+
+
+def _read_text(path: Path) -> tuple[str, list[str] | None]:
+    raw = path.read_text(encoding="utf-8")
+    image_tags = re.findall(r"<!--\s*image\s*-->", raw, flags=re.IGNORECASE)
+    doc_extra = [f"{len(image_tags)} image placeholder(s)"] if image_tags else None
+    doc_text = re.sub(r"<!--.*?-->", "", raw, flags=re.DOTALL).strip()
+    return doc_text, doc_extra
+
+TEST_CASES = [
+    "SAMA-3.1.1-5-L3-1",
+    "SAMA-3.1.1-5-L3-2",
+    "SAMA-3.1.3-2-L3-1",
+    "SAMA-3.2.1.3-3-L3-1",
+    "SAMA-3.2.4-2-L3-2",
+]
+
+
+def load_docs(folder: Path) -> list[dict]:
+    # If both .pdf and .md exist for the same stem, prefer .md (already extracted)
+    files = [f for f in sorted(folder.iterdir()) if f.is_file() and f.suffix.lower() in SUPPORTED_EXTENSIONS]
+    md_stems = {f.stem for f in files if f.suffix.lower() == ".md"}
+    docs = []
+    for f in files:
+        if f.suffix.lower() == ".pdf" and f.stem in md_stems:
+            continue  # skip PDF when an .md version exists
+        if f.suffix.lower() == ".pdf":
+            doc_text, doc_extra = _read_pdf(f)
+        else:
+            doc_text, doc_extra = _read_text(f)
+        if not doc_text:
+            print(f"  WARNING: {f.name} produced no text — skipping")
+            continue
+        docs.append({"doc_name": f.name, "doc_text": doc_text, "doc_extra": doc_extra})
+    return docs
+
+
+def score_set(evidence_code: str, folder: Path, label: str) -> dict:
+    docs = load_docs(folder)
+    if not docs:
+        return {"score_percentage": 0.0, "present": False, "reasoning": "No documents found.", "doc_names": []}
+    print(f"  [{label}] scoring {len(docs)} doc(s): {[d['doc_name'] for d in docs]}")
+    result = score_documents(evidence_code=evidence_code, documents=docs)
+    return result
+
+
+def main():
+    results = []
+
+    for tc in TEST_CASES:
+        tc_dir = BASE_DIR / tc
+        print(f"\n{'='*60}")
+        print(f"Test case: {tc}")
+
+        success_result = score_set(tc, tc_dir / "Success", "Success")
+        failure_result = score_set(tc, tc_dir / "Failure", "Failure")
+
+        def _mr_summary(result: dict) -> str:
+            mrs = result.get("micro_requirements", [])
+            if not mrs:
+                return ""
+            return " | ".join(f"{m['id']}={m['met_score']}" for m in mrs)
+
+        results.append({
+            "test_case": tc,
+            "success_score": success_result["score_percentage"],
+            "success_present": success_result["present"],
+            "success_reasoning": success_result.get("explanation_en", success_result.get("reasoning", "")),
+            "success_semantic_match": success_result.get("semantic_analysis", {}).get("semantic_match", ""),
+            "success_reliability": success_result.get("reliability", ""),
+            "success_micro_summary": _mr_summary(success_result),
+            "success_actions": success_result.get("actions_needed_en", []),
+            "failure_score": failure_result["score_percentage"],
+            "failure_present": failure_result["present"],
+            "failure_reasoning": failure_result.get("explanation_en", failure_result.get("reasoning", "")),
+            "failure_semantic_match": failure_result.get("semantic_analysis", {}).get("semantic_match", ""),
+            "failure_reliability": failure_result.get("reliability", ""),
+            "failure_micro_summary": _mr_summary(failure_result),
+            "failure_actions": failure_result.get("actions_needed_en", []),
+            # full LLM outputs for the JSON dump
+            "success_full": success_result,
+            "failure_full": failure_result,
+        })
+
+    # ── Summary table ──────────────────────────────────────────────────────────
+    print(f"\n\n{'='*60}")
+    print("BENCHMARK RESULTS")
+    print(f"{'='*60}")
+
+    col_tc  = 26
+    col_sc  = 16
+    col_fl  = 16
+    col_ok  = 8
+
+    header = (
+        f"{'Test Case':<{col_tc}}"
+        f"{'Success Score':>{col_sc}}"
+        f"{'  Present':<{col_ok}}"
+        f"{'Failure Score':>{col_fl}}"
+        f"{'  Present':<{col_ok}}"
+    )
+    print(header)
+    print("-" * (col_tc + col_sc + col_ok + col_fl + col_ok))
+
+    for r in results:
+        line = (
+            f"{r['test_case']:<{col_tc}}"
+            f"{r['success_score']:>{col_sc}.1f}%"
+            f"  {'YES' if r['success_present'] else 'NO':<{col_ok - 2}}"
+            f"{r['failure_score']:>{col_fl}.1f}%"
+            f"  {'YES' if r['failure_present'] else 'NO':<{col_ok - 2}}"
+        )
+        print(line)
+
+    print(f"{'='*60}")
+
+    # ── Reasoning detail ───────────────────────────────────────────────────────
+    print("\nREASONING DETAIL")
+    print(f"{'='*60}")
+    for r in results:
+        print(f"\n{r['test_case']}")
+        for label in ("success", "failure"):
+            score = r[f"{label}_score"]
+            match = r.get(f"{label}_semantic_match", "")
+            reliability = r.get(f"{label}_reliability", "")
+            reasoning = r[f"{label}_reasoning"]
+            mr_summary = r.get(f"{label}_micro_summary", "")
+            print(f"  [{label.upper()}] score={score:.0f}  match={match}  reliability={reliability}")
+            print(f"    {reasoning}")
+            if mr_summary:
+                print(f"    MR scores: {mr_summary}")
+            actions = r.get(f"{label}_actions", [])
+            if actions:
+                for a in actions[:3]:
+                    print(f"    • {a}")
+
+    # ── JSON dump ─────────────────────────────────────────────────────────────
+    out_path = BASE_DIR / "benchmark_results.json"
+    out_path.write_text(json.dumps(results, indent=2, ensure_ascii=False))
+    print(f"\nFull results saved to {out_path}")
+
+
+if __name__ == "__main__":
+    main()
