@@ -224,6 +224,44 @@ TC6 has never been solved by any model except Gemma4-26B. The underlying issue i
 ### Model size ≠ quality
 The 9B BF16 model (Qwen3.5-9B) matches the 26B MoE model in pass rate and has the best failure discrimination (avg 4.2%). The 32B AWQ and 12B BF16 models (both avg success 88.3%) have the worst failure discrimination.
 
+### Why Gemma3-12B-BF16 scores failure evidence so high (avg 75%)
+
+Three overlapping failure modes explain its 1/6 result:
+
+**1 — Ignores the TYPE_MISMATCH hard cap from Step 3**
+
+The prompt specifies: TYPE_MISMATCH → cap `evidence_strength` at 15–40. Gemma3-12B ignores this and scores TYPE_MISMATCH or PARTIAL_MATCH evidence at 60–95%.
+
+TC5 example — SAST architecture diagram vs. penetration testing requirement (failure scored **85%**):
+> *"The document provides architectural details of a sophisticated SAST system. While not a direct penetration testing report, it demonstrates the infrastructure and processes in place for vulnerability identification... The lack of a formal report prevents a full DIRECT_MATCH."*
+
+The model correctly identifies the mismatch ("while not a direct pentest report") but still scores 85%. A correct model should score 15–35%.
+
+**2 — Over-applies Step 2A (Substance Over Label) to any document with governance language**
+
+Step 2A is intended for functional equivalents (e.g. Strategy → Charter). Gemma3-12B applies it to any document that mentions roles, approvals, or governance — regardless of deliverable type.
+
+TC1 example — Vulnerability Management Process scored as a Charter (**95%**):
+> *"The Vulnerability Management Process document effectively acts as a charter for the cybersecurity function, clearly outlining its purpose, roles, responsibilities, and governance mechanisms."*
+
+A VMP is an operational how-to. It has governance language because it's formally approved — but that doesn't make it a charter. The model sees "RCC approval + roles mentioned" and skips the TYPE_MISMATCH check.
+
+TC2 example — Cloud Computing Standard scored as org structure (**85%**):
+> *"The 'Cloud Computing Standard' document... fulfills the requirement by demonstrating the structure and responsibilities of the Cyber Security Function through its detailed security standards, assigned roles, and RCC approval."*
+
+Any policy document mentions roles. The model cannot distinguish "a document that mentions a role" from "a document that defines organisational structure."
+
+**3 — Skips Step 4 (self-check before locking classification)**
+
+Step 4 requires: *"If your draft is TYPE_MISMATCH, re-read Step 2A–2F and verify the evidence does NOT match any listed equivalence."* Gemma3-12B does the opposite — it upgrades everything without applying the downward verification.
+
+TC4 example — Org chart scored **60%** for Risk Appetite:
+> *"The provided organizational chart... demonstrates an established organizational structure and clear reporting lines for cybersecurity risk acceptance."*
+
+An org chart has nothing to do with risk appetite thresholds. A proper self-check would catch that "org chart" appears nowhere in the Step 2 equivalences for Risk Appetite. The model finds the word "risk" in the requirement and "cybersecurity" in the org chart and conflates them.
+
+**Root cause: model capacity.** The 7-step prompt requires chained conditional reasoning: classify → check equivalences → self-check → apply caps. At 12B parameters, Gemma 3 defaults to a simpler heuristic: *"does this document contain compliance-related content with formal approval?" → score high.* It cannot hold the multi-step conditional logic across the full prompt length. Larger models (26B+) follow the conditional chain more faithfully — which is why even Qwen3.5-9B (also relatively small but a stronger architecture) outperforms it dramatically.
+
 ---
 
 ## 7. Recommendation
