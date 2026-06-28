@@ -15,8 +15,8 @@ _OAI_MODEL     = (os.environ.get("MODEL_NAME") or "gpt-4o").strip()
 
 MODEL = _VLLM_MODEL if _VLLM_BASE_URL else _OAI_MODEL
 
-# When using vLLM with a Qwen3 reasoning model, disable thinking mode so the
-# model returns JSON directly instead of a chain-of-thought preamble.
+# Thinking mode off — model returns JSON directly without chain-of-thought preamble.
+# _extract_json() still strips any stray </think> markers if present.
 _EXTRA_BODY: dict = {"chat_template_kwargs": {"enable_thinking": False}} if _VLLM_BASE_URL else {}
 
 # ── System prompt (timeless — no per-call variables) ──────────────────────────
@@ -34,7 +34,7 @@ You are a compliance evidence evaluation assistant for the SAMA Cyber Security F
 
 These compliance concepts are routinely confused. Treat them as distinct:
 
-- **Risk Acceptance** (a business owner formally signs off on accepting a specific, identified risk, often via a Jira/ITSM ticket with approval workflow, approver name, date, status) is NOT the same as **Risk Appetite** (an organization-level document defining overall risk tolerance tiers and thresholds). Evidence of a signed-off specific risk acceptance DOES satisfy "signed business-owner acceptance form" requirements. Do NOT require a separate Risk Appetite policy document for acceptance-form requirements.
+- **Risk Acceptance** (a business owner formally signs off on accepting a specific, identified risk, often via a Jira/ITSM ticket with approval workflow, approver name, date, status) is NOT the same as **Risk Appetite** (an organization-level document defining overall risk tolerance tiers and thresholds). Evidence of a signed-off specific risk acceptance DOES satisfy "signed business-owner acceptance form" requirements. Do NOT require a separate Risk Appetite policy document for acceptance-form requirements. **EXCEPTION for SAMA risk-acceptance controls (domain 3.2.1.x):** when the control itself is about the risk acceptance *process*, a formally approved ITSM/Jira risk acceptance workflow with multi-level governance sign-off (e.g. HoE → CTO → CPO) demonstrates predefined approval thresholds in operation and IS a PARTIAL_MATCH for Risk Appetite requirements — score evidence_strength 50-70 depending on how much threshold/tolerance detail is visible.
 - **Charter** (establishes a function, committee, or role with mandate, authority, structure, reporting lines) overlaps heavily with **Strategy** (defines same authority, structure, roles, reporting for the same scope). A strategy document that covers those four elements IS a functional charter. Do NOT demand a document literally titled "Charter".
 - **Policy** (mandatory requirements set by authority) overlaps with **Standard** (mandatory technical/procedural requirements). Either can satisfy the other.
 - **Procedure** (step-by-step how-to) can be satisfied by an **operational report** that shows recurring execution of those steps with dates/metrics.
@@ -61,6 +61,8 @@ Check these equivalences FIRST. If any match, classify as DIRECT_MATCH (or PARTI
 - Structured spreadsheet tracking items with dates, statuses, owners → IS a **Register**
 - Bi-weekly/monthly report tracking threats with statuses and actions → IS a **Register**
 - A vulnerability management process document that includes KPIs, scan frequencies, severity classifications, and remediation SLAs → at **L1-L2** this IS a **draft review report** (at L2 the process definition with effectiveness metrics is the review)
+- An approved audit schedule that explicitly lists a specific security domain (e.g., "Physical & Environmental Security") as a recurring audit scope with defined frequency and governance sign-off → IS evidence that the organisation formally monitors and evaluates that domain — score as PARTIAL_MATCH (evidence_strength 50-65). If the package also includes a KPI/metrics report or executed audit findings for that same domain, upgrade to DIRECT_MATCH.
+- A quarterly/annual KPI or KRI report that tracks effectiveness metrics for a specific security domain → IS an "effectiveness monitoring report" for that domain — score as DIRECT_MATCH when the metrics clearly map to the domain in the requirement.
 
 **2B) Board-Approved Equivalence:**
 RCC / Audit Committee / Executive Committee / Security Committee with board authority all count. Document control block with Approving Authority + Approval Date + Version = sufficient approval proof.
@@ -76,6 +78,7 @@ Multiple files = evaluate COLLECTIVELY as one package. First catalog what each f
 - 8 files showing 5+ different monitoring tools (e.g., CIS compliance dashboards + IP reputation + SSL scans + vulnerability assessments + cloud security reports) = comprehensive list → **DIRECT_MATCH**, evidence_strength 80+
 - 2 files from one narrow area (e.g., SSL scan + TLS scan = both certificate scanning) = incomplete list → PARTIAL_MATCH, evidence_strength ≤ 40
 The files themselves ARE the list — each file is evidence of an implemented tool. Do not require a separate "list document."
+- **Domain relevance in packages:** when the requirement is domain-specific (e.g., Physical Security, Third-Party, HR), only count files that address that domain. A cyber/technical security document (vulnerability scans, code KPIs) does NOT contribute to a Physical Security evaluation requirement even when included in the same package — assess it as non-contributing and score on the files that actually match the domain.
 
 **2F) Maturity Level:**
 At L1-L2: drafts, ad-hoc evidence, process docs with KPIs can satisfy "review report" requirements. At L3+: formal approval expected; process docs for register requirements = TYPE_MISMATCH.
@@ -163,6 +166,12 @@ def _extract_maturity_level(evidence_code: str) -> str:
 
 def _extract_json(raw: str) -> dict:
     """Extract first complete JSON object from raw text, handling think-blocks and fences."""
+    # When thinking mode is on without a server-side reasoning parser, the model may
+    # output its reasoning as plain text ending with </think> (no opening tag).
+    # Strip everything up to and including the last </think>.
+    if "</think>" in raw:
+        raw = raw[raw.rindex("</think>") + len("</think>"):].strip()
+    # Also strip any remaining <think>...</think> blocks (with opening tags)
     raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
     raw = re.sub(r"```json\s*|\s*```", "", raw).strip()
     try:
@@ -293,7 +302,7 @@ def _build_user_message(req: dict, documents: list[dict]) -> str:
 def _call_llm(user_message: str) -> dict:
     response = _client.chat.completions.create(
         model=MODEL,
-        max_tokens=2048,
+        max_tokens=4096,
         messages=[
             {"role": "system", "content": _SYSTEM_PROMPT},
             {"role": "user", "content": user_message},
