@@ -302,7 +302,7 @@ def _build_user_message(req: dict, documents: list[dict]) -> str:
 def _call_llm(user_message: str) -> dict:
     response = _client.chat.completions.create(
         model=MODEL,
-        max_tokens=4096,
+        max_tokens=2048,
         messages=[
             {"role": "system", "content": _SYSTEM_PROMPT},
             {"role": "user", "content": user_message},
