@@ -1,0 +1,969 @@
+[
+  {
+    "test_case": "SAMA-3.1.1-5-L3-1",
+    "prompt_version": "v5",
+    "success_score": 90.0,
+    "success_present": true,
+    "success_reasoning": "The Cyber Security Strategy document includes a detailed governance structure for the cyber security function, including the establishment of the Risk and Compliance Committee (RCC) and the Security Committee. It defines the roles, responsibilities, and reporting lines of the VP of Information Security and other key personnel, satisfying the requirement for an approved charter of the cyber security function.",
+    "success_semantic_match": "DIRECT_MATCH",
+    "success_reliability": 95,
+    "success_micro_summary": "MR1=5 | MR2=5 | MR3=5 | MR4=5 | MR5=5",
+    "success_actions": [],
+    "failure_score": 35.0,
+    "failure_present": false,
+    "failure_reasoning": "The document provided is a vulnerability management process document, not a charter for the cyber security function. It includes governance elements such as RCC approval and review schedules, but it does not define the cyber security function’s mandate, authority, or structure. Therefore, it does not satisfy the requirement for an 'approved cyber security function charter.'",
+    "failure_semantic_match": "TYPE_MISMATCH",
+    "failure_reliability": 70,
+    "failure_micro_summary": "MR1=0 | MR2=0 | MR3=0 | MR4=0 | MR5=0",
+    "failure_actions": [
+      "Provide a formal charter or strategy document that defines the cyber security function, including its mandate, authority, and reporting lines.",
+      "Ensure the charter is formally approved by the appropriate governance body (e.g., RCC, Audit Committee).",
+      "Include evidence of periodic review and updates for the charter."
+    ],
+    "elapsed_seconds": 33.6,
+    "success_full": {
+      "control_id": "3.1.1-5",
+      "control_title": "Cyber Security Function",
+      "domain": "Cyber Security Leadership and Governance",
+      "subdomain": "Cyber Security Governance",
+      "evidence_code": "SAMA-3.1.1-5-L3-1",
+      "evidence_description": "Approved Cyber Security Function Charter.",
+      "document_names": [
+        "Lean CyberSecurity Strategy v4 2025.docx-3.md"
+      ],
+      "present": true,
+      "score_percentage": 90.0,
+      "reasoning": "The Cyber Security Strategy document includes a detailed governance structure for the cyber security function, including the establishment of the Risk and Compliance Committee (RCC) and the Security Committee. It defines the roles, responsibilities, and reporting lines of the VP of Information Security and other key personnel, satisfying the requirement for an approved charter of the cyber security function.",
+      "reliability": 95,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have an approved charter that establishes and defines the cyber security function, including its authority, structure, roles, and reporting lines?",
+        "evidence_provides": "These files collectively answer: Yes, the Cyber Security Strategy document includes a defined governance structure for the cyber security function, including a Risk and Compliance Committee (RCC), a Security Committee, reporting lines, and responsibilities of key stakeholders such as the VP of Information Security, KSA Senior Security Manager, and SOC Analysts.",
+        "intent_alignment": "SAME_QUESTION",
+        "semantic_match": "DIRECT_MATCH",
+        "match_explanation": "The document provides a detailed governance structure for the cyber security function, including the establishment of a Security Committee, the reporting lines of the VP of Information Security and other key roles, and the responsibilities of each committee and individual. This satisfies the requirement for an approved charter of the cyber security function."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "Is the cyber security function formally established with a defined charter?",
+          "statement_ar": "هل تم إنشاء وظيفة الأمن السيبراني بشكل رسمي مع وجود ميثاق محدد؟",
+          "met_score": 5,
+          "evidence_snippet": "3.1.1 Risk and Compliance Committee (RCC)"
+        },
+        {
+          "id": "MR2",
+          "statement_en": "Does the charter define the authority, structure, and roles of the cyber security function?",
+          "statement_ar": "هل يحدد الميثاق سلطة، وبنية، ومهام وظيفة الأمن السيبراني؟",
+          "met_score": 5,
+          "evidence_snippet": "3.1.1 Risk and Compliance Committee (RCC)... 3.1.2 Security Committee... 3.2 Reporting Lines"
+        },
+        {
+          "id": "MR3",
+          "statement_en": "Is the cyber security function approved by the appropriate governance body?",
+          "statement_ar": "هل تم إقرار وظيفة الأمن السيبراني من قبل الجهة الحاكمة المناسبة؟",
+          "met_score": 5,
+          "evidence_snippet": "Approving Authority: Risk and Compliance Committee"
+        },
+        {
+          "id": "MR4",
+          "statement_en": "Are the reporting lines and escalation paths for the cyber security function clearly defined?",
+          "statement_ar": "هل تم تحديد خطوط التقارير والطرق التصعيدية لوظيفة الأمن السيبراني بشكل واضح؟",
+          "met_score": 5,
+          "evidence_snippet": "3.2 Reporting Lines... VP of Information Security reports to CEO... SOC Analysts report to SOC Manager"
+        },
+        {
+          "id": "MR5",
+          "statement_en": "Does the charter include responsibilities and accountability for the cyber security function?",
+          "statement_ar": "هل يشمل الميثاق مسؤوليات ومحاسبة لوظيفة الأمن السيبراني؟",
+          "met_score": 5,
+          "evidence_snippet": "Responsibilities: Implementation of Policies, Operational Oversight, Technology Evaluation, Continuous Improvement"
+        }
+      ],
+      "explanation_en": "The Cyber Security Strategy document includes a detailed governance structure for the cyber security function, including the establishment of the Risk and Compliance Committee (RCC) and the Security Committee. It defines the roles, responsibilities, and reporting lines of the VP of Information Security and other key personnel, satisfying the requirement for an approved charter of the cyber security function.",
+      "explanation_ar": "يحتوي مستند استراتيجية الأمن السيبراني على هيكل حوكمة مفصل لوظيفة الأمن السيبراني، بما في ذلك إنشاء لجنة المخاطر والامتثال (RCC) ولواء الأمن. كما يحدد أدوار ومسؤوليات وخطوط التقارير لرئيس الأمن المعلوماتي وغيرها من الأدوار الرئيسية، مما يلبي متطلبات وجود ميثاق معتمد لنشاط الأمن السيبراني.",
+      "actions_needed_en": [],
+      "actions_needed_ar": []
+    },
+    "failure_full": {
+      "control_id": "3.1.1-5",
+      "control_title": "Cyber Security Function",
+      "domain": "Cyber Security Leadership and Governance",
+      "subdomain": "Cyber Security Governance",
+      "evidence_code": "SAMA-3.1.1-5-L3-1",
+      "evidence_description": "Approved Cyber Security Function Charter.",
+      "document_names": [
+        "Vulnerability_Management_Process.md"
+      ],
+      "present": false,
+      "score_percentage": 35.0,
+      "reasoning": "The document provided is a vulnerability management process document, not a charter for the cyber security function. It includes governance elements such as RCC approval and review schedules, but it does not define the cyber security function’s mandate, authority, or structure. Therefore, it does not satisfy the requirement for an 'approved cyber security function charter.'",
+      "reliability": 70,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Is there a formally approved charter that establishes and defines the cyber security function, including its mandate, authority, and reporting lines?",
+        "evidence_provides": "These files collectively answer: This is a vulnerability management process document that outlines scanning frequency, classification, remediation timelines, and patch deployment, with governance by VP Infosec and approval by RCC.",
+        "intent_alignment": "DIFFERENT_QUESTION",
+        "semantic_match": "TYPE_MISMATCH",
+        "match_explanation": "The evidence provided is a vulnerability management process document, not a charter for the cyber security function. While it shows governance (RCC approval, VP Infosec ownership), it does not define the structure, authority, or reporting lines of the cyber security function itself. It is about vulnerability handling, not organizational structure or function establishment."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "The cyber security function is formally established with a defined mandate.",
+          "statement_ar": "تم إنشاء وظيفة الأمن السيبراني رسميًا مع تعريف واضح لمجالها.",
+          "met_score": 0,
+          "evidence_snippet": "The document is about vulnerability management, not the establishment of a cyber security function."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The charter defines the authority of the cyber security function.",
+          "statement_ar": "يحدد الميثاق سلطة وظيفة الأمن السيبراني.",
+          "met_score": 0,
+          "evidence_snippet": "No charter is provided; the document does not define the authority of the cyber security function."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The charter includes reporting lines and organizational structure.",
+          "statement_ar": "يحتوي الميثاق على سلسلة التقارير وبنية المؤسسة.",
+          "met_score": 0,
+          "evidence_snippet": "The document does not include reporting lines or organizational structure for the cyber security function."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The charter is formally approved by the appropriate governance body.",
+          "statement_ar": "تم إقرار الميثاق رسميًا من قبل الجهة الحاكمة المناسبة.",
+          "met_score": 0,
+          "evidence_snippet": "The document is approved by RCC, but it is about vulnerability management, not the charter of the cyber security function."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The charter is periodically reviewed and updated as required.",
+          "statement_ar": "يتم مراجعة الميثاق دوريًا وتحديثه حسب الحاجة.",
+          "met_score": 0,
+          "evidence_snippet": "The document has a review schedule, but it is for the vulnerability management process, not the cyber security function charter."
+        }
+      ],
+      "explanation_en": "The document provided is a vulnerability management process document, not a charter for the cyber security function. It includes governance elements such as RCC approval and review schedules, but it does not define the cyber security function’s mandate, authority, or structure. Therefore, it does not satisfy the requirement for an 'approved cyber security function charter.'",
+      "explanation_ar": "الوثيقة المقدمة هي وثيقة عملية إدارة الثغرات، وليس ميثاقًا لوظيفة الأمن السيبراني. تحتوي على عناصر حوكمة مثل الموافقة من قبل RCC وجدولة المراجعات، لكنها لا تحدد مسؤولية أو سلطة أو هيكل وظيفة الأمن السيبراني. وبالتالي، لا تلبي المتطلب المتعلق بـ 'ميثاق وظيفة الأمن السيبراني المعتمد'.",
+      "actions_needed_en": [
+        "Provide a formal charter or strategy document that defines the cyber security function, including its mandate, authority, and reporting lines.",
+        "Ensure the charter is formally approved by the appropriate governance body (e.g., RCC, Audit Committee).",
+        "Include evidence of periodic review and updates for the charter."
+      ],
+      "actions_needed_ar": [
+        "قدم ميثاقًا أو وثيقة استراتيجية رسمية تحدد وظيفة الأمن السيبراني، بما في ذلك مجالها، سلطتها، وسلسلة التقارير.",
+        "تأكد من أن الميثاق تم إقراره رسميًا من قبل الجهة الحاكمة المناسبة (مثل RCC، أو لجنة المراجعة).",
+        "شامل دليل على المراجعة الدورية والتحديثات لميثاق وظيفة الأمن السيبراني."
+      ]
+    }
+  },
+  {
+    "test_case": "SAMA-3.1.1-5-L3-2",
+    "prompt_version": "v5",
+    "success_score": 90.0,
+    "success_present": true,
+    "success_reasoning": "The provided evidence is a digitally signed organizational chart that explicitly shows the Cyber Security Function as a direct reporting line to the CEO. It includes a senior manager with a named individual, and the document is formally approved by the CEO. The chart also includes regulatory reporting lines and formal titles, satisfying the requirement for a L3 maturity level under SAMA-3.1.1-5.",
+    "success_semantic_match": "DIRECT_MATCH",
+    "success_reliability": 95,
+    "success_micro_summary": "MR1=5 | MR2=5 | MR3=5 | MR4=5 | MR5=5",
+    "success_actions": [],
+    "failure_score": 35.0,
+    "failure_present": false,
+    "failure_reasoning": "The provided evidence is a technical standard document for cloud computing security, not an organizational chart or a charter for the Cyber Security Function. While it shows governance (RCC approval, version control), it does not define the structure, roles, or reporting lines of the Cyber Security Function. The requirement explicitly asks for an organizational chart showing the structure of the Cyber Security Function, which is not satisfied by a technical policy document.",
+    "failure_semantic_match": "TYPE_MISMATCH",
+    "failure_reliability": 75,
+    "failure_micro_summary": "MR1=0 | MR2=5 | MR3=0 | MR4=5 | MR5=5",
+    "failure_actions": [
+      "Provide an organizational chart or charter document that explicitly defines the Cyber Security Function structure, roles, and reporting lines.",
+      "Ensure that the document is formally approved by the appropriate governance body (e.g., RCC, CISO, or executive committee).",
+      "Include a visual or textual representation of the Cyber Security Function's structure."
+    ],
+    "elapsed_seconds": 33.1,
+    "success_full": {
+      "control_id": "3.1.1-5",
+      "control_title": "Cyber Security Function",
+      "domain": "Cyber Security Leadership and Governance",
+      "subdomain": "Cyber Security Governance",
+      "evidence_code": "SAMA-3.1.1-5-L3-2",
+      "evidence_description": "Organizational chart showing Cyber Security Function structure.",
+      "document_names": [
+        "Signed Org chart - SAMA.md"
+      ],
+      "present": true,
+      "score_percentage": 90.0,
+      "reasoning": "The provided evidence is a digitally signed organizational chart that explicitly shows the Cyber Security Function as a direct reporting line to the CEO. It includes a senior manager with a named individual, and the document is formally approved by the CEO. The chart also includes regulatory reporting lines and formal titles, satisfying the requirement for a L3 maturity level under SAMA-3.1.1-5.",
+      "reliability": 95,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have an organizational chart that explicitly shows the Cyber Security Function's structure and reporting lines?",
+        "evidence_provides": "These files collectively answer: Yes, the signed org chart shows the Cyber Security Function as a direct reporting line to the CEO and includes a named senior manager, 'Senior Cyber Security Manager,' with a KSA location and name, 'Abdulrahman Naif.' The chart is digitally signed by the CEO and includes formal titles and reporting lines.",
+        "intent_alignment": "SAME_QUESTION",
+        "semantic_match": "DIRECT_MATCH",
+        "match_explanation": "The document is an organizational chart explicitly showing the Cyber Security Function as a direct reporting line to the CEO. It includes a senior-level manager with a name and location. The chart is formally approved via DocuSign by the CEO, Hisham Al-Falih, and includes regulatory reporting lines and formal titles. This satisfies the control requirement at L3 maturity level."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "Cyber Security Function is explicitly shown as a separate function reporting directly to the CEO.",
+          "statement_ar": "يتم عرض وظيفة الأمن السيبراني كوظيفة منفصلة تُقرّر مباشرة إلى المدير التنفيذي.",
+          "met_score": 5,
+          "evidence_snippet": "Cyber Security is listed as a direct reporting function to the CEO in the org chart."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "Cyber Security Function has a senior manager with a named individual.",
+          "statement_ar": "لديها وظيفة الأمن السيبراني مُدراء مُتقدم مع فرد مُسمى.",
+          "met_score": 5,
+          "evidence_snippet": "Senior Cyber Security Manager: Abdulrahman Naif (KSA)"
+        },
+        {
+          "id": "MR3",
+          "statement_en": "Organizational chart is formally signed by the CEO.",
+          "statement_ar": "يتم توقيع خريطة التنظيم رسميًا من قبل المدير التنفيذي.",
+          "met_score": 5,
+          "evidence_snippet": "DocuSigned by: Hisham Al-Falih (CEO) with handwritten signature and digital ID."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "Reporting lines and regulatory relationships are clearly defined.",
+          "statement_ar": "الخطوط التقاريرية والعلاقات التنظيمية تُحدد بوضوح.",
+          "met_score": 5,
+          "evidence_snippet": "Grey arrows show reporting lines from Cyber Security to CEO and dashed lines for regulatory reporting."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "Document includes formal titles and roles for all functions and teams.",
+          "statement_ar": "تضم الوثيقة عناوين رسمية وأدوار لكل الوظائف والفرق.",
+          "met_score": 5,
+          "evidence_snippet": "Formal titles like 'Senior Cyber Security Manager,' 'Chief Technology Officer,' and 'Head of People and Talent' are included."
+        }
+      ],
+      "explanation_en": "The provided evidence is a digitally signed organizational chart that explicitly shows the Cyber Security Function as a direct reporting line to the CEO. It includes a senior manager with a named individual, and the document is formally approved by the CEO. The chart also includes regulatory reporting lines and formal titles, satisfying the requirement for a L3 maturity level under SAMA-3.1.1-5.",
+      "explanation_ar": "تضم الأدلة المقدمة خريطة تنظيمية موقعة رقميًا تظهر وظيفة الأمن السيبراني كوظيفة مباشرة تُقرّر إلى المدير التنفيذي. كما تشمل الوثيقة مُدراء مُتقدمين مع أسماء مُحددة، ويتم توقيع الوثيقة رسميًا من قبل المدير التنفيذي. كما تتضمن خريطة تقارير تنظيمية وأسماء رسمية، وتفي بالمتطلب لمستوى النضج L3 تحت SAMA-3.1.1-5.",
+      "actions_needed_en": [],
+      "actions_needed_ar": []
+    },
+    "failure_full": {
+      "control_id": "3.1.1-5",
+      "control_title": "Cyber Security Function",
+      "domain": "Cyber Security Leadership and Governance",
+      "subdomain": "Cyber Security Governance",
+      "evidence_code": "SAMA-3.1.1-5-L3-2",
+      "evidence_description": "Organizational chart showing Cyber Security Function structure.",
+      "document_names": [
+        "Cloud Computing Standard v2.0.docx.md"
+      ],
+      "present": false,
+      "score_percentage": 35.0,
+      "reasoning": "The provided evidence is a technical standard document for cloud computing security, not an organizational chart or a charter for the Cyber Security Function. While it shows governance (RCC approval, version control), it does not define the structure, roles, or reporting lines of the Cyber Security Function. The requirement explicitly asks for an organizational chart showing the structure of the Cyber Security Function, which is not satisfied by a technical policy document.",
+      "reliability": 75,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have an organizational chart showing the Cyber Security Function structure?",
+        "evidence_provides": "These files collectively answer: The document is a cloud computing standard with governance metadata (version, approver, review schedule), prepared by the VP of InfoSec and approved by RCC. It is a formal technical policy, not an organizational chart.",
+        "intent_alignment": "DIFFERENT_QUESTION",
+        "semantic_match": "TYPE_MISMATCH",
+        "match_explanation": "The document is a technical standard document for cloud computing security, not an organizational chart or a charter. While it shows governance (RCC approval, version control), it does not define the structure, roles, or reporting lines of the Cyber Security Function. The requirement explicitly asks for an organizational chart showing the structure of the Cyber Security Function, which is not satisfied by a technical policy document."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "The document defines the structure of the Cyber Security Function, including roles, responsibilities, and reporting lines.",
+          "statement_ar": "يحدد المستند بنية وظيفة الأمن السيبراني، بما في ذلك الأدوار والمسؤوليات والخطوط التقاريرية.",
+          "met_score": 0,
+          "evidence_snippet": "The document does not define the structure of the Cyber Security Function."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The document shows a formal governance approval for the Cyber Security Function (e.g., by RCC or an executive committee).",
+          "statement_ar": "يُظهر المستند موافقة رسمية للهيكل الأمني السيبراني من قبل هيئة حوكمة رسمية.",
+          "met_score": 5,
+          "evidence_snippet": "The document is approved by RCC."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The document provides a visual or textual representation of the Cyber Security Function's organizational structure.",
+          "statement_ar": "يُقدم المستند تمثيلًا بصرية أو نصيًا للهيكل التنظيمي لфункциة الأمن السيبراني.",
+          "met_score": 0,
+          "evidence_snippet": "The document does not provide a visual or textual representation of the Cyber Security Function structure."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The document is version-controlled and has a defined review cycle.",
+          "statement_ar": "المستند مُستند بنسخة معروفة وله دورة مراجعة محددة.",
+          "met_score": 5,
+          "evidence_snippet": "Version 2.0; Last review March 2025; Next review March 2026."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The document is prepared by the appropriate authority for the Cyber Security Function (e.g., CISO or VP of Infosec).",
+          "statement_ar": "يُعد المستند من قبل الجهة المناسبة لوظيفة الأمن السيبراني (مثل المدير التنفيذي للأمن السيبراني أو نائب الرئيس للأمن المعلوماتي).",
+          "met_score": 5,
+          "evidence_snippet": "Prepared by VP Infosec."
+        }
+      ],
+      "explanation_en": "The provided evidence is a technical standard document for cloud computing security, not an organizational chart or a charter for the Cyber Security Function. While it shows governance (RCC approval, version control), it does not define the structure, roles, or reporting lines of the Cyber Security Function. The requirement explicitly asks for an organizational chart showing the structure of the Cyber Security Function, which is not satisfied by a technical policy document.",
+      "explanation_ar": "الدليل المقدم هو مستند معيار تقني للأمن في الحوسبة السحابية، وليس خريطة تنظيمية أو تفويض لوحدة الأمن السيبراني. على الرغم من أن المستند يظهر حوكمة (مثل الموافقة من قبل RCC، وجود نظام لجداول المراجعة)، إلا أنه لا يحدد بنية الوحدة الأمنية السيبرانية أو الأدوار أو الخطوط التقاريرية. الشرط المطلوب يطلب خريطة تنظيمية تُظهر هيكل وظيفة الأمن السيبراني، وهو غير مُحقق عبر مستند سياسة تقنية.",
+      "actions_needed_en": [
+        "Provide an organizational chart or charter document that explicitly defines the Cyber Security Function structure, roles, and reporting lines.",
+        "Ensure that the document is formally approved by the appropriate governance body (e.g., RCC, CISO, or executive committee).",
+        "Include a visual or textual representation of the Cyber Security Function's structure."
+      ],
+      "actions_needed_ar": [
+        "قدم خريطة تنظيمية أو مستند تفويض يحدد صراحةً بنية الوظيفة الأمنية السيبرانية والأدوار والخطوط التقاريرية.",
+        "تأكد من أن المستند مُوافق عليه رسمياً من قبل هيئة حوكمة مناسبة (مثل RCC أو المدير التنفيذي للأمن السيبراني أو اللجنة التنفيذية).",
+        "أضف تمثيلاً بصرية أو نصيًا للهيكل التنظيمي لوحدة الأمن السيبراني."
+      ]
+    }
+  },
+  {
+    "test_case": "SAMA-3.1.3-2-L3-1",
+    "prompt_version": "v5",
+    "success_score": 90.0,
+    "success_present": true,
+    "success_reasoning": "The documents provided include embedded metadata with version history, approval dates, next scheduled reviews, and approving authorities, which directly satisfy the requirement for a Cyber Security Policy version history document. These are structured, approved, and governed, demonstrating periodic review and alignment with SAMA CSF requirements.",
+    "success_semantic_match": "DIRECT_MATCH",
+    "success_reliability": 90,
+    "success_micro_summary": "MR1=5 | MR2=5 | MR3=5 | MR4=5 | MR5=5",
+    "success_actions": [],
+    "failure_score": 15.0,
+    "failure_present": false,
+    "failure_reasoning": "The submitted file is an organizational chart, not a Cyber Security Policy version history document. While it shows the organizational structure and includes a signature by the CEO, it does not provide evidence of the Cyber Security Policy's version history, periodic reviews, or a structured review process. Therefore, it does not satisfy the requirement for a documented version history of the Cyber Security Policy.",
+    "failure_semantic_match": "DOMAIN_MISMATCH",
+    "failure_reliability": 30,
+    "failure_micro_summary": "MR1=0 | MR2=0 | MR3=0 | MR4=0 | MR5=0",
+    "failure_actions": [
+      "Submit the actual Cyber Security Policy document with version history metadata (version number, approval date, last review date, next review date).",
+      "Provide evidence of the structured review process for the Cyber Security Policy (e.g., audit schedule, KPI tracking, or SLA).",
+      "Include formal approval evidence for the Cyber Security Policy document (e.g., signed by executive or committee)."
+    ],
+    "elapsed_seconds": 37.5,
+    "success_full": {
+      "control_id": "3.1.3-2",
+      "control_title": "Policy Review",
+      "domain": "Cyber Security Leadership and Governance",
+      "subdomain": "Cyber Security Policy",
+      "evidence_code": "SAMA-3.1.3-2-L3-1",
+      "evidence_description": "Cyber Security Policy version history document.",
+      "document_names": [
+        "Infrastructure Security Standard v2.docx.md",
+        "Lean Tech Information Security Policy v4 .docx-3.md",
+        "Lean_Password_Policy.docx-3.md"
+      ],
+      "present": true,
+      "score_percentage": 90.0,
+      "reasoning": "The documents provided include embedded metadata with version history, approval dates, next scheduled reviews, and approving authorities, which directly satisfy the requirement for a Cyber Security Policy version history document. These are structured, approved, and governed, demonstrating periodic review and alignment with SAMA CSF requirements.",
+      "reliability": 90,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have a documented version history for its Cyber Security Policy, showing periodic review and approval by an authorized authority?",
+        "evidence_provides": "These files collectively answer: Yes. The Infrastructure Security Standard v2.docx.md includes metadata with Approval Date, Next Scheduled Review, Version, and Approving Authority. The Lean Tech Information Security Policy v4 .docx-3.md also includes similar metadata, including Approval Date, Next Scheduled Review, Version, and Approving Authority. These documents show structured and periodic review processes for security policies.",
+        "intent_alignment": "SAME_QUESTION",
+        "semantic_match": "DIRECT_MATCH",
+        "match_explanation": "The documents contain embedded version metadata with Approval Date, Next Scheduled Review, Version, and Approving Authority, which directly satisfy the requirement for a version history document. These are formal, approved, and structured, aligning with the auditor's intent."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "The document provides a version history with version number, approval date, and next scheduled review date.",
+          "statement_ar": "يحتوي المستند على سجل إصدار يتضمن رقم الإصدار وتاريخ الموافقة وتاريخ المراجعة القادمة.",
+          "met_score": 5,
+          "evidence_snippet": "Version: 2.0; Approval Date: March 2025; Next Scheduled Review: March 2025"
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The document is approved by a recognized authority (e.g., RCC, Board, or equivalent).",
+          "statement_ar": "يتم الموافقة على المستند من قبل سلطة معترف بها (مثل RCC أو مجلس الإدارة أو ما يعادلها).",
+          "met_score": 5,
+          "evidence_snippet": "Approving Authority: RCC"
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The document includes a structured review process with defined review frequency and responsible authority.",
+          "statement_ar": "يحتوي المستند على عملية مراجعة منظمة مع تعريف تكرار المراجعة والسلطة المسؤولة.",
+          "met_score": 5,
+          "evidence_snippet": "Next Scheduled Review: March 2025; Review Frequency: Yearly"
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The document is part of a larger Cyber Security Policy framework and references or aligns with the overall policy.",
+          "statement_ar": "يكون المستند جزءًا من إطار سياسة أمن السيبرانشة الأكبر وي-reference أو يتوافق مع السياسة العامة.",
+          "met_score": 5,
+          "evidence_snippet": "This document provides a consolidated set of Infrastructure security controls that are based upon Lean security policies and standards."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The document is formally approved and includes metadata indicating governance oversight.",
+          "statement_ar": "يتم إقرار المستند رسميًا ويحتوي على بيانات تعريف تشير إلى إشراف الحوكمة.",
+          "met_score": 5,
+          "evidence_snippet": "Approved By: VP Infosec; Approving Authority: RCC"
+        }
+      ],
+      "explanation_en": "The documents provided include embedded metadata with version history, approval dates, next scheduled reviews, and approving authorities, which directly satisfy the requirement for a Cyber Security Policy version history document. These are structured, approved, and governed, demonstrating periodic review and alignment with SAMA CSF requirements.",
+      "explanation_ar": "تشمل الوثائق المعروضة بيانات تعريف مدمجة تحتوي على سجل إصدار وتاريخ الموافقة وتاريخ المراجعة القادمة والسلطة الموافقة، والتي تلبي مباشرة متطلبات المستند الخاص بسجل إصدار سياسة أمن السيبرانشة. هذه الوثائق منظمة ومُوَافَقة ومُحْكَمة، مما يُظهر مراجعة دورية وتوافقًا مع متطلبات SAMA CSF.",
+      "actions_needed_en": [],
+      "actions_needed_ar": []
+    },
+    "failure_full": {
+      "control_id": "3.1.3-2",
+      "control_title": "Policy Review",
+      "domain": "Cyber Security Leadership and Governance",
+      "subdomain": "Cyber Security Policy",
+      "evidence_code": "SAMA-3.1.3-2-L3-1",
+      "evidence_description": "Cyber Security Policy version history document.",
+      "document_names": [
+        "Signed Org chart - SAMA.md"
+      ],
+      "present": false,
+      "score_percentage": 15.0,
+      "reasoning": "The submitted file is an organizational chart, not a Cyber Security Policy version history document. While it shows the organizational structure and includes a signature by the CEO, it does not provide evidence of the Cyber Security Policy's version history, periodic reviews, or a structured review process. Therefore, it does not satisfy the requirement for a documented version history of the Cyber Security Policy.",
+      "reliability": 30,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have a documented version history for the Cyber Security Policy, showing periodic reviews with approval metadata (version, date, approver)?",
+        "evidence_provides": "These files collectively answer: The document provides an organizational chart showing the structure of the organization, including the Cyber Security function, but does not provide version history or review metadata for the Cyber Security Policy.",
+        "intent_alignment": "DIFFERENT_QUESTION",
+        "semantic_match": "DOMAIN_MISMATCH",
+        "match_explanation": "The requirement asks for a Cyber Security Policy version history document with periodic review evidence. The provided file is an Organizational Chart, which shows the structure of the organization and roles but does not provide version history or review metadata for the Cyber Security Policy. This is a domain mismatch, as the file does not address the policy review process."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "The Cyber Security Policy document includes version metadata (version number, approval date, last review date, next review date).",
+          "statement_ar": "يحتوي مستند سياسة الأمن السيبراني على بيانات الإصدار (رقم الإصدار، وتاريخ الموافقة، وتاريخ المراجعة الأخيرة، وتاريخ المراجعة التالية).",
+          "met_score": 0,
+          "evidence_snippet": "The document is an organizational chart and does not include version metadata for the Cyber Security Policy."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "There is evidence of a structured review process for the Cyber Security Policy (e.g., review frequency, responsible parties, approval workflow).",
+          "statement_ar": "هناك دليل على وجود عملية مراجعة منظمة لسياسة الأمن السيبراني (مثل تردد المراجعة، والجهات المسؤولة، وتدفق الموافقة).",
+          "met_score": 0,
+          "evidence_snippet": "The document is an organizational chart and does not include a structured review process for the Cyber Security Policy."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The Cyber Security Policy document is formally approved by the relevant authority (e.g., executive, committee, or board).",
+          "statement_ar": "يتم منح موافقة رسمية لمستند سياسة الأمن السيبراني من قبل الجهة المعنية (مثل الإدارة التنفيذية أو اللجنة أو مجلس الإدارة).",
+          "met_score": 0,
+          "evidence_snippet": "The document is signed by the CEO, but it is an organizational chart, not a policy document."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The Cyber Security Policy document is part of a documented review process (e.g., audit schedule, KPI tracking, or SLA).",
+          "statement_ar": "يُعتبر مستند سياسة الأمن السيبراني جزءًا من عملية مراجعة مستندتة (مثل جدول التدقيق أو تتبع مؤشرات الأداء الرئيسية أو SLA).",
+          "met_score": 0,
+          "evidence_snippet": "The document is an organizational chart and does not reference a review process for the Cyber Security Policy."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The Cyber Security Policy document reflects periodic review with documented changes or updates.",
+          "statement_ar": "يُظهر مستند سياسة الأمن السيبراني مراجعة دورية مع تسجيل التغييرات أو التحديثات.",
+          "met_score": 0,
+          "evidence_snippet": "The document is an organizational chart and does not reflect any periodic review of the Cyber Security Policy."
+        }
+      ],
+      "explanation_en": "The submitted file is an organizational chart, not a Cyber Security Policy version history document. While it shows the organizational structure and includes a signature by the CEO, it does not provide evidence of the Cyber Security Policy's version history, periodic reviews, or a structured review process. Therefore, it does not satisfy the requirement for a documented version history of the Cyber Security Policy.",
+      "explanation_ar": "يُعتبر المستند المقدم هو خريطة تنظيمية، وليس مستندًا لسجل الإصدارات لسياسة الأمن السيبراني. بينما يُظهر هيكل المنظمة ويحتوي على توقيع من قبل الرئيس التنفيذي، إلا أنه لا يوفر أي دليل على سجل إصدار سياسة الأمن السيبراني أو مراجعة دورية أو عملية مراجعة منظمة. وبالتالي، لا يلبي هذا المستند المتطلب الخاص بمستند سجل الإصدارات لسياسة الأمن السيبراني.",
+      "actions_needed_en": [
+        "Submit the actual Cyber Security Policy document with version history metadata (version number, approval date, last review date, next review date).",
+        "Provide evidence of the structured review process for the Cyber Security Policy (e.g., audit schedule, KPI tracking, or SLA).",
+        "Include formal approval evidence for the Cyber Security Policy document (e.g., signed by executive or committee)."
+      ],
+      "actions_needed_ar": [
+        "قدم المستند الفعلي لسياسة الأمن السيبراني مع بيانات سجل الإصدار (رقم الإصدار، وتاريخ الموافقة، وتاريخ المراجعة الأخيرة، وتاريخ المراجعة التالية).",
+        "قدم دليلًا على وجود عملية مراجعة منظمة لسياسة الأمن السيبراني (مثل جدول التدقيق أو تتبع مؤشرات الأداء الرئيسية أو SLA).",
+        "أضف دليلًا على الموافقة الرسمية لمستند سياسة الأمن السيبراني (مثل توقيع من الإدارة التنفيذية أو اللجنة)."
+      ]
+    }
+  },
+  {
+    "test_case": "SAMA-3.2.1.3-3-L3-1",
+    "prompt_version": "v5",
+    "success_score": 70.0,
+    "success_present": true,
+    "success_reasoning": "The evidence partially satisfies the requirement for a Risk Appetite document, as it demonstrates a formal risk acceptance process with multi-level approvals and tracking of accepted risks. However, the evidence does not explicitly define the organization's overall risk appetite thresholds or tolerance levels, which is a key component of a Risk Appetite document. Therefore, it is a partial match.",
+    "success_semantic_match": "PARTIAL_MATCH",
+    "success_reliability": 85,
+    "success_micro_summary": "MR1=3 | MR2=5 | MR3=5 | MR4=3 | MR5=3",
+    "success_actions": [
+      "Include explicit risk appetite thresholds (e.g., acceptable risk levels, tolerance limits) in the risk acceptance process documentation.",
+      "Ensure the risk appetite document is formally approved by a governance body (e.g., Risk & Compliance Committee).",
+      "Document how the risk acceptance process aligns with the organization’s overall risk appetite framework."
+    ],
+    "failure_score": 15.0,
+    "failure_present": false,
+    "failure_reasoning": "The provided evidence is an organizational chart, which outlines the organizational structure, roles, and reporting lines. However, it does not serve as a Risk Appetite document, as it does not define risk levels, thresholds, or risk acceptance criteria. A Risk Appetite document must include predefined risk tolerance levels and decision-making criteria for risk acceptance. The organizational chart, while formally approved, is not functionally equivalent to a Risk Appetite document and thus fails to satisfy the requirement.",
+    "failure_semantic_match": "DOMAIN_MISMATCH",
+    "failure_reliability": 85,
+    "failure_micro_summary": "MR1=0 | MR2=5 | MR3=5 | MR4=0 | MR5=0",
+    "failure_actions": [
+      "Submit a Risk Appetite document that explicitly defines risk thresholds, acceptance criteria, and formal approval by authorized individuals.",
+      "Ensure the Risk Appetite document aligns with SAMA regulations and includes periodic review mechanisms for accepted risks."
+    ],
+    "elapsed_seconds": 32.9,
+    "success_full": {
+      "control_id": "3.2.1.3-3",
+      "control_title": "Accepting Cyber Security Risks Requirements",
+      "domain": "Cyber Security Risk Management & Compliance",
+      "subdomain": "Cyber Security Risk Response",
+      "evidence_code": "SAMA-3.2.1.3-3-L3-1",
+      "evidence_description": "Approved Risk Appetite document.",
+      "document_names": [
+        "Risk acceptance evidence1.md",
+        "risk acceptance flow.md"
+      ],
+      "present": true,
+      "score_percentage": 70.0,
+      "reasoning": "The evidence partially satisfies the requirement for a Risk Appetite document, as it demonstrates a formal risk acceptance process with multi-level approvals and tracking of accepted risks. However, the evidence does not explicitly define the organization's overall risk appetite thresholds or tolerance levels, which is a key component of a Risk Appetite document. Therefore, it is a partial match.",
+      "reliability": 85,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have a formally approved Risk Appetite document that defines predefined limits for risk levels?",
+        "evidence_provides": "These files collectively answer: Yes, the organization has a formal risk acceptance workflow with predefined approval thresholds and a documented risk acceptance process via Jira, including a multi-level approval process (HoE → CTO → CPO) and a clearly defined expiration date for risk acceptance.",
+        "intent_alignment": "RELATED_QUESTION",
+        "semantic_match": "PARTIAL_MATCH",
+        "match_explanation": "The evidence shows a formal risk acceptance workflow with predefined approval thresholds (HoE → CTO → CPO), which partially satisfies the requirement for a Risk Appetite document. However, it does not fully define the organization’s overall risk appetite thresholds or tolerance levels, only the process for accepting specific risks. Therefore, this is a partial match."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "The organization defines predefined limits for risk levels (risk appetite thresholds).",
+          "statement_ar": "المنظمة تحدد حدود محددة مسبقًا لمستويات المخاطر (معدلات تحمل المخاطر).",
+          "met_score": 3,
+          "evidence_snippet": "The workflow includes multi-level approvals (HoE → CTO → CPO), but no explicit risk appetite thresholds are defined in the documents."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The risk acceptance process includes formal approval and sign-off by the business owner.",
+          "statement_ar": "يحتوي عملية قبول المخاطر على موافقة رسمية وتوقيع من قبل مالك العمل.",
+          "met_score": 5,
+          "evidence_snippet": "The Jira ticket shows the risk was approved with an expiration date of March 10, 2023, and the workflow includes HoE, CTO, and CPO approvals."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "Accepted risks are tracked and periodically reviewed.",
+          "statement_ar": "تُتْبَعُ المخاطر المقبولة وتُراجع دوريًا.",
+          "met_score": 5,
+          "evidence_snippet": "The Jira ticket includes a 'Risk Acceptance Expiration Date' of March 10, 2023, and a timeline for DevOps to resolve the issue."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "Risk acceptance does not contradict SAMA regulations.",
+          "statement_ar": "قبول المخاطر لا يتعارض مع لوائح SAMA.",
+          "met_score": 3,
+          "evidence_snippet": "The ticket references a previously agreed Secure SDLC approach and mentions alignment with security requirements in non-production environments."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The risk appetite document is formally approved by a governance body.",
+          "statement_ar": "وثيقة تقبل المخاطر تمت الموافقة عليها رسميًا من قبل هيئة حوكمة.",
+          "met_score": 3,
+          "evidence_snippet": "The workflow includes CTO and CPO approvals, but no explicit mention of a governance body or committee."
+        }
+      ],
+      "explanation_en": "The evidence partially satisfies the requirement for a Risk Appetite document, as it demonstrates a formal risk acceptance process with multi-level approvals and tracking of accepted risks. However, the evidence does not explicitly define the organization's overall risk appetite thresholds or tolerance levels, which is a key component of a Risk Appetite document. Therefore, it is a partial match.",
+      "explanation_ar": "تُلبِّي الأدلة جزئيًا المتطلبات الخاصة بوثيقة تقبل المخاطر، حيث تُظهر عملية قبول المخاطر الرسمية مع الموافقة متعددة المستويات وتتبع المخاطر المقبولة. ولكن لا تحدد الأدلة صراحةً حدود تحمل المخاطر الشاملة للمنظمة أو معدلات التحمل، وهي عنصر أساسي لوثيقة تقبل المخاطر. لذلك، فهي مطابقة جزئية.",
+      "actions_needed_en": [
+        "Include explicit risk appetite thresholds (e.g., acceptable risk levels, tolerance limits) in the risk acceptance process documentation.",
+        "Ensure the risk appetite document is formally approved by a governance body (e.g., Risk & Compliance Committee).",
+        "Document how the risk acceptance process aligns with the organization’s overall risk appetite framework."
+      ],
+      "actions_needed_ar": [
+        "أضف حدود تحمل المخاطر الصريحة (مثل مستويات المخاطر القابلة للقبول، حدود التحمل) في مستند عملية قبول المخاطر.",
+        "أكد على أن وثيقة تقبل المخاطر تمت الموافقة عليها رسميًا من قبل هيئة حوكمة (مثل لجنة المخاطر والامتثال).",
+        "وثِّق كيف تتماشى عملية قبول المخاطر مع إطار تحمل المخاطر العام للمنظمة."
+      ]
+    },
+    "failure_full": {
+      "control_id": "3.2.1.3-3",
+      "control_title": "Accepting Cyber Security Risks Requirements",
+      "domain": "Cyber Security Risk Management & Compliance",
+      "subdomain": "Cyber Security Risk Response",
+      "evidence_code": "SAMA-3.2.1.3-3-L3-1",
+      "evidence_description": "Approved Risk Appetite document.",
+      "document_names": [
+        "Signed Org chart - SAMA.md"
+      ],
+      "present": false,
+      "score_percentage": 15.0,
+      "reasoning": "The provided evidence is an organizational chart, which outlines the organizational structure, roles, and reporting lines. However, it does not serve as a Risk Appetite document, as it does not define risk levels, thresholds, or risk acceptance criteria. A Risk Appetite document must include predefined risk tolerance levels and decision-making criteria for risk acceptance. The organizational chart, while formally approved, is not functionally equivalent to a Risk Appetite document and thus fails to satisfy the requirement.",
+      "reliability": 85,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have an approved Risk Appetite document that defines predefined limits for risk levels?",
+        "evidence_provides": "These files collectively answer: This is an organizational chart with roles and responsibilities but does not define risk appetite or risk thresholds.",
+        "intent_alignment": "DIFFERENT_QUESTION",
+        "semantic_match": "DOMAIN_MISMATCH",
+        "match_explanation": "The document is an organizational chart, which defines roles, reporting lines, and governance structure but does not define risk appetite or risk thresholds. A Risk Appetite document should establish predefined risk tolerance levels and decision-making criteria for risk acceptance. The organizational chart does not fulfill this requirement."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "The document defines the organization's predefined risk appetite levels and thresholds.",
+          "statement_ar": "يحدد المستند مستويات ومحددات تقبل المخاطر المسبقة للمنظمة.",
+          "met_score": 0,
+          "evidence_snippet": "No such content is present in the organizational chart."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The document includes formal approval and sign-off by authorized individuals.",
+          "statement_ar": "يحتوي المستند على موافقة رسمية وإقرار من قبل الأشخاص المصرح لهم.",
+          "met_score": 5,
+          "evidence_snippet": "The document is DocuSigned by Hisham Al-Falih, the CEO."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The document aligns with SAMA regulations and governance structure.",
+          "statement_ar": "يتوافق المستند مع لوائح SAMA وبنية الحوكمة.",
+          "met_score": 5,
+          "evidence_snippet": "The document includes the CEO and functions such as Compliance, Risk Management, and Cyber Security, indicating alignment with regulatory functions."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The document includes predefined limits for risk acceptance.",
+          "statement_ar": "يحتوي المستند على حدود مسبقة لقبول المخاطر.",
+          "met_score": 0,
+          "evidence_snippet": "No such content is present in the organizational chart."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The document ensures that accepted risks are tracked and periodically reviewed.",
+          "statement_ar": "يؤكد المستند أنه يتم تتبع المخاطر المقبولة وتقييمها بشكل دوري.",
+          "met_score": 0,
+          "evidence_snippet": "No such content is present in the organizational chart."
+        }
+      ],
+      "explanation_en": "The provided evidence is an organizational chart, which outlines the organizational structure, roles, and reporting lines. However, it does not serve as a Risk Appetite document, as it does not define risk levels, thresholds, or risk acceptance criteria. A Risk Appetite document must include predefined risk tolerance levels and decision-making criteria for risk acceptance. The organizational chart, while formally approved, is not functionally equivalent to a Risk Appetite document and thus fails to satisfy the requirement.",
+      "explanation_ar": "الدليل المقدم هو خريطة تنظيمية توضح البنية التنظيمية والوظائف والخطوط التقاريرية. ومع ذلك، فإنه لا يخدم كمستند لتحمل المخاطر، لأنه لا يحدد مستويات المخاطر أو المعايير أو حدود تحمل المخاطر. يجب أن يتضمن مستند تحمل المخاطر مستويات تحمل المخاطر المسبقة ومعايير اتخاذ القرار لقبول المخاطر. الخريطة التنظيمية، رغم أنها معتمدة رسميًا، ليست مكافئة وظيفيًا لمستند تحمل المخاطر وبالتالي لا تحقق المتطلب.",
+      "actions_needed_en": [
+        "Submit a Risk Appetite document that explicitly defines risk thresholds, acceptance criteria, and formal approval by authorized individuals.",
+        "Ensure the Risk Appetite document aligns with SAMA regulations and includes periodic review mechanisms for accepted risks."
+      ],
+      "actions_needed_ar": [
+        "قدم مستند تحمل المخاطر الذي يحدد صراحةً حدود المخاطر ومعايير القبول والموافقة الرسمية من الأشخاص المصرح لهم.",
+        "أكد أن مستند تحمل المخاطر متوافق مع لوائح SAMA ويتضمن آليات تقييم دورية للمخاطر المقبولة."
+      ]
+    }
+  },
+  {
+    "test_case": "SAMA-3.2.4-2-L3-2",
+    "prompt_version": "v5",
+    "success_score": 90.0,
+    "success_present": true,
+    "success_reasoning": "The two submitted documents are valid penetration testing reports for internet-facing systems, conducted by third-party vendors. The reports include detailed findings, timelines, and remediation recommendations. These meet the requirement for annual penetration testing on customer-facing services.",
+    "success_semantic_match": "DIRECT_MATCH",
+    "success_reliability": 95,
+    "success_micro_summary": "MR1=5 | MR2=5 | MR3=5 | MR4=5 | MR5=5",
+    "success_actions": [],
+    "failure_score": 25.0,
+    "failure_present": false,
+    "failure_reasoning": "The provided evidence is a detailed architecture diagram for an AI-enhanced Static Application Security Testing (SAST) system called P-SAST. While the tool is sophisticated and integrates AI, formal verification, and compliance with EU standards, it is not a penetration test report. A SAST tool is used for static code analysis, while a penetration test is an active external attack simulation. These are fundamentally different assessments. The file does not confirm that a penetration test was conducted on internet-facing systems, nor does it include findings or remediation recommendations. As such, the evidence does not satisfy the requirement.",
+    "failure_semantic_match": "TYPE_MISMATCH",
+    "failure_reliability": 25,
+    "failure_micro_summary": "MR1=0 | MR2=0 | MR3=0 | MR4=0 | MR5=0",
+    "failure_actions": [
+      "Submit a formal penetration test report that includes findings, remediation recommendations, and approval from the appropriate governance body.",
+      "Ensure the report is dated within the last 12 months and includes a summary of the scope and methodology used."
+    ],
+    "elapsed_seconds": 34.1,
+    "success_full": {
+      "control_id": "3.2.4-2",
+      "control_title": "Annual Review and Penetration Testing for Customer Services",
+      "domain": "Cyber Security Risk Management & Compliance",
+      "subdomain": "Cyber Security Review",
+      "evidence_code": "SAMA-3.2.4-2-L3-2",
+      "evidence_description": "Penetration Testing report for internet-facing systems.",
+      "document_names": [
+        "3rd party pentesting report Nov 2024 KSA.md",
+        "Lean Technologies (KSA) Penetration Testing Report Nov-Dec 2025.md"
+      ],
+      "present": true,
+      "score_percentage": 90.0,
+      "reasoning": "The two submitted documents are valid penetration testing reports for internet-facing systems, conducted by third-party vendors. The reports include detailed findings, timelines, and remediation recommendations. These meet the requirement for annual penetration testing on customer-facing services.",
+      "reliability": 95,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have a valid penetration testing report for internet-facing systems?",
+        "evidence_provides": "These files collectively answer: Yes, two penetration testing reports were conducted in 2024 and 2025, covering both sandbox and production environments of internet-facing systems.",
+        "intent_alignment": "SAME_QUESTION",
+        "semantic_match": "DIRECT_MATCH",
+        "match_explanation": "The two files are penetration testing reports specifically for internet-facing systems of Lean Technologies, conducted by third-party vendors. The reports include findings, methodologies, and timestamps that align with the requirement for annual penetration testing on customer-facing services."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "Penetration testing was conducted on internet-facing systems.",
+          "statement_ar": "تم إجراء اختبار اختراق على الأنظمة التي تواجه الإنترنت.",
+          "met_score": 5,
+          "evidence_snippet": "Lean Technologies (KSA) Penetration Testing Final Report"
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The report includes findings and vulnerabilities identified during the test.",
+          "statement_ar": "يحتوي التقرير على العيوب والهجمات المكتشفة خلال الاختبار.",
+          "met_score": 5,
+          "evidence_snippet": "Findings Summary: 4 Low vulnerabilities identified."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The report was issued by a third-party vendor.",
+          "statement_ar": "تم إصدار التقرير بواسطة شركة خارجية.",
+          "met_score": 5,
+          "evidence_snippet": "Lean Technologies (KSA) Penetration Testing Report Nov 2024 KSA"
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The report includes a timeline of the testing engagement.",
+          "statement_ar": "يحتوي التقرير على جدول زمني للعملية.",
+          "met_score": 5,
+          "evidence_snippet": "Timeline of the test: Nov 12, 2024 to Nov 20, 2024"
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The report includes recommendations for remediation.",
+          "statement_ar": "يحتوي التقرير على توصيات للتصحيح.",
+          "met_score": 5,
+          "evidence_snippet": "Recommendation: Implement proper access control checks at the API."
+        }
+      ],
+      "explanation_en": "The two submitted documents are valid penetration testing reports for internet-facing systems, conducted by third-party vendors. The reports include detailed findings, timelines, and remediation recommendations. These meet the requirement for annual penetration testing on customer-facing services.",
+      "explanation_ar": "التوثيقان المقدمان هما تقارير اختبار اختراق صادرة عن موردين خارجيين، وتغطيان الأنظمة التي تواجه الإنترنت. ويحتويان على نتائج مفصلة، جداول زمنية، وتوصيات للتصحيح. وهذا يلبي متطلبات الاختبار السنوي على الخدمات الموجهة للعملاء.",
+      "actions_needed_en": [],
+      "actions_needed_ar": []
+    },
+    "failure_full": {
+      "control_id": "3.2.4-2",
+      "control_title": "Annual Review and Penetration Testing for Customer Services",
+      "domain": "Cyber Security Risk Management & Compliance",
+      "subdomain": "Cyber Security Review",
+      "evidence_code": "SAMA-3.2.4-2-L3-2",
+      "evidence_description": "Penetration Testing report for internet-facing systems.",
+      "document_names": [
+        "WhatsApp Image 2026-02-17 at 4.08.39 PM.md"
+      ],
+      "present": false,
+      "score_percentage": 25.0,
+      "reasoning": "The provided evidence is a detailed architecture diagram for an AI-enhanced Static Application Security Testing (SAST) system called P-SAST. While the tool is sophisticated and integrates AI, formal verification, and compliance with EU standards, it is not a penetration test report. A SAST tool is used for static code analysis, while a penetration test is an active external attack simulation. These are fundamentally different assessments. The file does not confirm that a penetration test was conducted on internet-facing systems, nor does it include findings or remediation recommendations. As such, the evidence does not satisfy the requirement.",
+      "reliability": 25,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have a penetration test report for internet-facing systems?",
+        "evidence_provides": "These files collectively answer: A detailed architecture diagram for an AI-enhanced SAST tool (P-SAST), including data sources, scanning rules, and AI integration.",
+        "intent_alignment": "DIFFERENT_QUESTION",
+        "semantic_match": "TYPE_MISMATCH",
+        "match_explanation": "The evidence is a Static Application Security Testing (SAST) architecture diagram, not a Penetration Test report. A SAST tool is used for automated code analysis during development, whereas a penetration test is an active external attack simulation. These are fundamentally different types of security assessments. The architecture does not include findings from an actual penetration test, nor does it confirm that such a test was conducted."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "A penetration test was conducted on internet-facing systems.",
+          "statement_ar": "تم إجراء اختبار اختراق على أنظمة الإنترنت المواجهة.",
+          "met_score": 0,
+          "evidence_snippet": "The architecture describes a SAST tool, not a penetration test."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The penetration test was conducted within the last 12 months.",
+          "statement_ar": "تم إجراء اختبار الاختراق خلال الـ 12 شهرًا الماضية.",
+          "met_score": 0,
+          "evidence_snippet": "No date is provided for when the system was last used for penetration testing."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The penetration test report includes findings and remediation recommendations.",
+          "statement_ar": "يحتوي تقرير اختبار الاختراق على النتائج والتوصيات للإصلاح.",
+          "met_score": 0,
+          "evidence_snippet": "No findings or recommendations are presented in the SAST architecture."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The penetration test was approved and authorized by the appropriate governance body.",
+          "statement_ar": "تم إعتماد اختبار الاختراق ومعتمد من قبل الجهة الإشرافية المناسبة.",
+          "met_score": 0,
+          "evidence_snippet": "No approval or authorization is documented in the file."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The penetration test report is properly documented and stored.",
+          "statement_ar": "يتم تسجيل تقرير اختبار الاختراق وتخزينه بشكل صحيح.",
+          "met_score": 0,
+          "evidence_snippet": "The file is an image of an architecture diagram and does not represent a formal penetration test report."
+        }
+      ],
+      "explanation_en": "The provided evidence is a detailed architecture diagram for an AI-enhanced Static Application Security Testing (SAST) system called P-SAST. While the tool is sophisticated and integrates AI, formal verification, and compliance with EU standards, it is not a penetration test report. A SAST tool is used for static code analysis, while a penetration test is an active external attack simulation. These are fundamentally different assessments. The file does not confirm that a penetration test was conducted on internet-facing systems, nor does it include findings or remediation recommendations. As such, the evidence does not satisfy the requirement.",
+      "explanation_ar": "يحتوي الملف المقدم على مخطط تفصيلي لبرنامج اختبار أمني ثابت (SAST) مُحسَّن باستخدام الذكاء الاصطناعي يُسمى P-SAST. على الرغم من أن الأداة معقدة وتدمج الذكاء الاصطناعي والتحقق الرسمي والامتثال للوائح الاتحاد الأوروبي، إلا أنها ليست تقرير اختبار اختراق. تُستخدم أدوات SAST لتحليل الشفرة الثابتة، بينما يُعد اختبار الاختراق محاكاة هجوم خارجي نشط. هذه تقييمات جذرية مختلفة. لا يؤكد الملف أن اختبار اختراق تم إجراؤه على الأنظمة المواجهة للإنترنت، ولا يحتوي على نتائج أو توصيات للإصلاح. وبالتالي، لا يلبي الملف المتطلبات.",
+      "actions_needed_en": [
+        "Submit a formal penetration test report that includes findings, remediation recommendations, and approval from the appropriate governance body.",
+        "Ensure the report is dated within the last 12 months and includes a summary of the scope and methodology used."
+      ],
+      "actions_needed_ar": [
+        "أرفق تقرير اختبار اختراق رسمي يشمل النتائج والتوصيات للإصلاح، مع موافقة من الجهة الإشرافية المناسبة.",
+        "تأكد من أن التقرير مُحرر في الـ 12 شهرًا الماضية ويحتوي على ملخص حول نطاق وطريقة الاختبار."
+      ]
+    }
+  },
+  {
+    "test_case": "SAMA-3.3.2-2-L3-1",
+    "prompt_version": "v5",
+    "success_score": 85.0,
+    "success_present": true,
+    "success_reasoning": "The provided evidence includes an internal audit schedule with a recurring annual evaluation of 'Physical & Environmental Security', a KPIs/KRIs report with metrics tracking the effectiveness of security measures, and a vulnerability management process that includes defined timelines for remediation and periodic evaluations. These documents collectively demonstrate that the organization has a process in place to monitor, measure, and evaluate the effectiveness of its physical and environmental security measures.",
+    "success_semantic_match": "DIRECT_MATCH",
+    "success_reliability": 90,
+    "success_micro_summary": "MR1=5 | MR2=5 | MR3=5 | MR4=5 | MR5=5",
+    "success_actions": [],
+    "failure_score": 55.0,
+    "failure_present": false,
+    "failure_reasoning": "The submitted evidence includes an internal audit schedule that explicitly includes 'Physical & Environmental Security' as a recurring audit scope with a defined frequency and governance approval by the RCC. This demonstrates that the organization has a formal process to periodically evaluate the domain. However, the package does not include a KPI/KRI report or audit findings specific to this domain, which would be needed to fully satisfy the requirement for an 'effectiveness monitoring report'. The org chart is non-contributing in this context.",
+    "failure_semantic_match": "PARTIAL_MATCH",
+    "failure_reliability": 85,
+    "failure_micro_summary": "MR1=5 | MR2=5 | MR3=0 | MR4=0 | MR5=3",
+    "failure_actions": [
+      "Include a KPI/KRI report or audit findings report specific to the 'Physical & Environmental Security' domain to demonstrate actual effectiveness monitoring.",
+      "Ensure the internal audit schedule includes detailed metrics and evaluation criteria for the Physical and Environmental Security process.",
+      "Provide a documented report or output from a recent evaluation of the Physical and Environmental Security process."
+    ],
+    "elapsed_seconds": 48.0,
+    "success_full": {
+      "control_id": "3.3.2-2",
+      "control_title": "Physical Security Process Effectiveness Monitoring",
+      "domain": "Operation & Technology",
+      "subdomain": "Physical Security",
+      "evidence_code": "SAMA-3.3.2-2-L3-1",
+      "evidence_description": "Physical and Environmental Security process evaluation report.",
+      "document_names": [
+        "Live 2025 - Lean Tech Internal Audit Schedule V7 (2)_1.md",
+        "SecurityCompliance__KPIs__KRIs_ (1)_1.md",
+        "Vulnerability_Management_Process (2)_1.md"
+      ],
+      "present": true,
+      "score_percentage": 85.0,
+      "reasoning": "The provided evidence includes an internal audit schedule with a recurring annual evaluation of 'Physical & Environmental Security', a KPIs/KRIs report with metrics tracking the effectiveness of security measures, and a vulnerability management process that includes defined timelines for remediation and periodic evaluations. These documents collectively demonstrate that the organization has a process in place to monitor, measure, and evaluate the effectiveness of its physical and environmental security measures.",
+      "reliability": 90,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have a physical and environmental security process evaluation report that demonstrates the effectiveness of the process is monitored, measured, and periodically evaluated?",
+        "evidence_provides": "These files collectively answer: An internal audit schedule with a recurring annual evaluation of 'Physical & Environmental Security', a KPIs/KRIs report with metrics tracking the effectiveness of security measures, and a vulnerability management process that includes periodic evaluations and SLAs for remediation.",
+        "intent_alignment": "SAME_QUESTION",
+        "semantic_match": "DIRECT_MATCH",
+        "match_explanation": "The internal audit schedule explicitly includes 'Physical & Environmental Security' as an annual audit scope, approved by the RCC. The KPIs/KRIs report provides effectiveness metrics for security measures, including physical security access reviews and vulnerability remediation tracking. The vulnerability management process includes defined timelines for remediation and periodic evaluations. Together, these files demonstrate that the organization has a process in place to monitor, measure, and evaluate the effectiveness of its physical and environmental security measures."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "The organization has an approved internal audit schedule that includes physical and environmental security as a recurring evaluation scope.",
+          "statement_ar": "لدى المنظمة جدول تدقيق داخلي معتمد يشمل الأمن البيئي والفيزيائي كمجال تقييم دوري.",
+          "met_score": 5,
+          "evidence_snippet": "Internal Audit | Physical & Environmental Security | 12"
+        },
+        {
+          "id": "MR2",
+          "statement_en": "The organization has a KPIs/KRIs report that includes metrics tracking the effectiveness of physical and environmental security measures.",
+          "statement_ar": "لدى المنظمة تقرير KPIs/KRIs يشمل مقاييس تتبع فعالية تدابير الأمن البيئي والفيزيائي.",
+          "met_score": 5,
+          "evidence_snippet": "KP02 | # of vulnerabilities per 1k lines of code | Calculates the number of vulnerabilities per 1k lines of code"
+        },
+        {
+          "id": "MR3",
+          "statement_en": "The organization has a vulnerability management process that includes defined timelines for remediation and periodic evaluations.",
+          "statement_ar": "لدى المنظمة عملية إدارة الثغرات تشمل تواريخ محددة للإصلاح والتقييمات الدورية.",
+          "met_score": 5,
+          "evidence_snippet": "SLA : Issue should be fixed in less than 3 days time."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "The organization has a documented process for triaging and prioritizing vulnerabilities based on severity.",
+          "statement_ar": "لدى المنظمة عملية مدونة لتقييم الأولويات والثغرات بناءً على الشدة.",
+          "met_score": 5,
+          "evidence_snippet": "Our triage process divides all issues identified into three categories: Fix, Acknowledge/Risk accept and Investigate."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "The organization has a documented process for monitoring and evaluating the effectiveness of its vulnerability management process.",
+          "statement_ar": "لدى المنظمة عملية مدونة لمراقبة وتقييم فعالية عملية إدارة الثغرات.",
+          "met_score": 5,
+          "evidence_snippet": "The organization shall regularly measure and evaluate the effectiveness of its Vulnerability Management Process to ensure timely identification, prioritization, and remediation of security vulnerabilities."
+        }
+      ],
+      "explanation_en": "The provided evidence includes an internal audit schedule with a recurring annual evaluation of 'Physical & Environmental Security', a KPIs/KRIs report with metrics tracking the effectiveness of security measures, and a vulnerability management process that includes defined timelines for remediation and periodic evaluations. These documents collectively demonstrate that the organization has a process in place to monitor, measure, and evaluate the effectiveness of its physical and environmental security measures.",
+      "explanation_ar": "تتضمن الأدلة المقدمة جدول تدقيق داخلي مع تقييم دوري سنوي لأمن البيئة والفيزيائي، وتقرير KPIs/KRIs مع مقاييس تتبع فعالية تدابير الأمان، وعملية إدارة الثغرات تشمل تواريخ محددة للإصلاح والتقييمات الدورية. هذه الوثائق مجتمعة تظهر أن لدى المنظمة عملية لرصد، قياس، وتقييم فعالية تدابير الأمن البيئي والفيزيائي.",
+      "actions_needed_en": [],
+      "actions_needed_ar": []
+    },
+    "failure_full": {
+      "control_id": "3.3.2-2",
+      "control_title": "Physical Security Process Effectiveness Monitoring",
+      "domain": "Operation & Technology",
+      "subdomain": "Physical Security",
+      "evidence_code": "SAMA-3.3.2-2-L3-1",
+      "evidence_description": "Physical and Environmental Security process evaluation report.",
+      "document_names": [
+        "Live 2025 - Lean Tech Internal Audit Schedule V7 (2)_1.md",
+        "Signed Org chart - SAMA.md"
+      ],
+      "present": false,
+      "score_percentage": 55.0,
+      "reasoning": "The submitted evidence includes an internal audit schedule that explicitly includes 'Physical & Environmental Security' as a recurring audit scope with a defined frequency and governance approval by the RCC. This demonstrates that the organization has a formal process to periodically evaluate the domain. However, the package does not include a KPI/KRI report or audit findings specific to this domain, which would be needed to fully satisfy the requirement for an 'effectiveness monitoring report'. The org chart is non-contributing in this context.",
+      "reliability": 85,
+      "semantic_analysis": {
+        "requirement_intent": "The auditor is asking: Does the organization have a formal report or evaluation of the effectiveness of the Physical and Environmental Security process?",
+        "evidence_provides": "These files collectively answer: There is an approved internal audit schedule that includes 'Physical & Environmental Security' as a recurring audit scope, and there is an organizational chart showing governance and roles.",
+        "intent_alignment": "RELATED_QUESTION",
+        "semantic_match": "PARTIAL_MATCH",
+        "match_explanation": "The internal audit schedule explicitly includes 'Physical & Environmental Security' as a recurring audit scope with defined frequency and governance approval (RCC-approved). This demonstrates that the organization formally evaluates the domain. However, the package lacks a KPI/KRI report or executed audit findings specific to the Physical and Environmental Security domain, which would be needed for a full 'effectiveness monitoring report'. The org chart is non-contributing in this context."
+      },
+      "evaluation_path": "DOCUMENT",
+      "micro_requirements": [
+        {
+          "id": "MR1",
+          "statement_en": "Is there a formal schedule for the evaluation of the Physical and Environmental Security process?",
+          "statement_ar": "هل هناك جدول رسمياً لประเมاعة عملية الأمن والسلامة البيئية؟",
+          "met_score": 5,
+          "evidence_snippet": "Internal Audit Schedule includes 'Physical & Environmental Security' as a recurring audit scope with frequency and approval by RCC."
+        },
+        {
+          "id": "MR2",
+          "statement_en": "Is the evaluation process for Physical and Environmental Security governed and approved?",
+          "statement_ar": "هل عملية تقييم الأمن والسلامة البيئية معتمدة ومُحكمة؟",
+          "met_score": 5,
+          "evidence_snippet": "Document is approved by RCC and has a clear approval date and owner (Head of InfoSec)."
+        },
+        {
+          "id": "MR3",
+          "statement_en": "Are there any KPIs or metrics tracking the effectiveness of the Physical and Environmental Security process?",
+          "statement_ar": "هل هناك مؤشرات الأداء الرئيسية أو مقاييس تُقيّم فعالية عملية الأمن والسلامة البيئية؟",
+          "met_score": 0,
+          "evidence_snippet": "No KPIs or metrics specific to Physical and Environmental Security are included in the audit schedule."
+        },
+        {
+          "id": "MR4",
+          "statement_en": "Is there a documented report or output from a recent evaluation of the Physical and Environmental Security process?",
+          "statement_ar": "هل هناك تقرير أو مخرج مُوثق من تقييم حديث لعملية الأمن والسلامة البيئية؟",
+          "met_score": 0,
+          "evidence_snippet": "No audit findings or KPI/KRI reports specific to Physical and Environmental Security are included."
+        },
+        {
+          "id": "MR5",
+          "statement_en": "Is the organizational structure relevant to the Physical and Environmental Security process clearly defined?",
+          "statement_ar": "هل هيكل المنظمة المتعلقة بعملية الأمن والسلامة البيئية مُعرف بوضوح؟",
+          "met_score": 3,
+          "evidence_snippet": "The org chart shows the structure of the organization, but it does not specifically define roles or responsibilities related to the Physical and Environmental Security process."
+        }
+      ],
+      "explanation_en": "The submitted evidence includes an internal audit schedule that explicitly includes 'Physical & Environmental Security' as a recurring audit scope with a defined frequency and governance approval by the RCC. This demonstrates that the organization has a formal process to periodically evaluate the domain. However, the package does not include a KPI/KRI report or audit findings specific to this domain, which would be needed to fully satisfy the requirement for an 'effectiveness monitoring report'. The org chart is non-contributing in this context.",
+      "explanation_ar": "تتضمن الأدلة المقدمة جدول تدقيق داخلي يشمل 'الأمن والسلامة البيئية' كمجال تدقيق دوري مع تردد واضح ومعتمد من قبل RCC. وهذا يظهر أن لدى المنظمة عملية رسمية لتقييم المجال بشكل دوري. ومع ذلك، لا يحتوي الحزمة على تقرير مؤشرات الأداء الرئيسية أو نتائج تدقيق محددة لهذا المجال، وهو ما يُعتبر ضروريًا لاستيفاء المتطلبات بشكل كامل. إن مخطط الهيكل التنظيمي لا يسهم بشكل مباشر في هذا السياق.",
+      "actions_needed_en": [
+        "Include a KPI/KRI report or audit findings report specific to the 'Physical & Environmental Security' domain to demonstrate actual effectiveness monitoring.",
+        "Ensure the internal audit schedule includes detailed metrics and evaluation criteria for the Physical and Environmental Security process.",
+        "Provide a documented report or output from a recent evaluation of the Physical and Environmental Security process."
+      ],
+      "actions_needed_ar": [
+        "أضف تقرير مؤشرات الأداء الرئيسية أو نتائج التدقيق الخاصة بمجال 'الأمن والسلامة البيئية' لإظهار مراقبة الفعالية الفعلية.",
+        "تأكد من أن جدول التدقيق الداخلي يحتوي على مقاييس وتفاصيل تقييم لعملية الأمن والسلامة البيئية.",
+        "قدم تقريرًا موثقًا أو مخرجًا من تقييم حديث لعملية الأمن والسلامة البيئية."
+      ]
+    }
+  }
+]
