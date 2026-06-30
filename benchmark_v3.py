@@ -179,38 +179,40 @@ def main():
 
     # ── JSON dump ─────────────────────────────────────────────────────────────
     safe_model = model.replace("/", "_").replace(":", "_")
-    out_path = BASE_DIR / f"benchmark_results_v2_{safe_model}.json"
+    out_path = BASE_DIR / f"benchmark_results_v3_{safe_model}.json"
     out_path.write_text(json.dumps(results, indent=2, ensure_ascii=False))
     print(f"\nFull results saved to {out_path}")
 
     # ── Quick diff vs v1 ──────────────────────────────────────────────────────
     v1_path = BASE_DIR / f"benchmark_results_{safe_model}.json"
+    v2_path = BASE_DIR / f"benchmark_results_v2_{safe_model}.json"
     if v1_path.exists():
         v1 = {r["test_case"]: r for r in json.loads(v1_path.read_text())}
+        v2 = {r["test_case"]: r for r in json.loads(v2_path.read_text())} if v2_path.exists() else {}
         print(f"\n{'='*60}")
-        print(f"DIFF vs v1 (prompt v1 → v2)")
+        print(f"DIFF — v1 / v2 / v3 comparison")
         print(f"{'='*60}")
-        print(f"{'Test Case':<26}  {'v1 S/F':>12}  {'v2 S/F':>12}  {'Δ Success':>10}  {'Δ Failure':>10}  Result")
-        print("-" * 80)
-        v1_pass = v2_pass = 0
+        print(f"{'Test Case':<26}  {'v1':>10}  {'v2':>10}  {'v3':>10}  v1→v3")
+        print("-" * 76)
+        v1_pass = v2_pass = v3_pass = 0
         for r in results:
             tc = r["test_case"]
             r1 = v1.get(tc)
+            r2 = v2.get(tc) if v2 else None
             if not r1:
                 continue
-            ds = r["success_score"] - r1["success_score"]
-            df = r["failure_score"] - r1["failure_score"]
-            v1_ok = "✅" if (r1["success_present"] and not r1["failure_present"]) else "❌"
-            v2_ok = "✅" if (r["success_present"] and not r["failure_present"]) else "❌"
+            ok1 = "✅" if (r1["success_present"] and not r1["failure_present"]) else "❌"
+            ok2 = ("✅" if (r2["success_present"] and not r2["failure_present"]) else "❌") if r2 else " ─"
+            ok3 = "✅" if (r["success_present"] and not r["failure_present"]) else "❌"
             if r1["success_present"] and not r1["failure_present"]: v1_pass += 1
-            if r["success_present"] and not r["failure_present"]: v2_pass += 1
-            ds_str = f"{ds:+.0f}%"
-            df_str = f"{df:+.0f}%"
-            v1_str = f"{r1['success_score']:.0f}%/{r1['failure_score']:.0f}%"
-            v2_str = f"{r['success_score']:.0f}%/{r['failure_score']:.0f}%"
-            print(f"{tc:<26}  {v1_str:>12}  {v2_str:>12}  {ds_str:>10}  {df_str:>10}  {v1_ok}→{v2_ok}")
-        print("-" * 80)
-        print(f"{'PASS COUNT':<26}  {v1_pass}/6{'':<10}  {v2_pass}/6")
+            if r2 and r2["success_present"] and not r2["failure_present"]: v2_pass += 1
+            if r["success_present"] and not r["failure_present"]: v3_pass += 1
+            s1 = f"{r1['success_score']:.0f}/{r1['failure_score']:.0f}"
+            s2 = (f"{r2['success_score']:.0f}/{r2['failure_score']:.0f}") if r2 else "─/─"
+            s3 = f"{r['success_score']:.0f}/{r['failure_score']:.0f}"
+            print(f"{tc:<26}  {ok1} {s1:>8}  {ok2} {s2:>8}  {ok3} {s3:>8}  {ok1}→{ok3}")
+        print("-" * 76)
+        print(f"{'PASS COUNT':<26}  {v1_pass}/6{'':<8}  {v2_pass}/6{'':<8}  {v3_pass}/6")
     else:
         print(f"\n(No v1 results found at {v1_path} — run benchmark.py first to enable diff)")
 
